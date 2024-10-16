@@ -1,9 +1,15 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import {ChevronRight} from 'lucide-react';
 
 const AuthScreen = () => {
     const [email, setEmail] = useState("");
+	const navigate = useNavigate();
+
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+		navigate("/signup?email=" + email);
+	};
     return (
         <div className='hero-bg relative'>
             {/* Navbar */}
@@ -20,7 +26,7 @@ const AuthScreen = () => {
 				<p className='text-4xl mb-4'>Watch anywhere. Cancel anytime.</p>
 				<p className='text-xl mb-4'>Start streaming now! Enter your email to sign up or reactivate your membership.</p>
             
-            <form className='flex flex-col md:flex-row gap-4 w-1/2'>
+            <form className='flex flex-col md:flex-row gap-4 w-1/2' onSubmit={handleFormSubmit}>
 					<input
 						type='email'
 						placeholder='Email address'
@@ -148,7 +154,7 @@ const AuthScreen = () => {
 			<div className='h-2 w-full bg-[#232323]' aria-hidden='true' />
 
         </div>
-    );
+    );																																								
 }
 
 export default AuthScreen;
