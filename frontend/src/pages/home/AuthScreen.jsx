@@ -10,6 +10,7 @@ const AuthScreen = () => {
 		e.preventDefault();
 		navigate("/signup?email=" + email);
 	};
+	
     return (
         <div className='hero-bg relative'>
             {/* Navbar */}
